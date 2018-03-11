@@ -2,7 +2,6 @@
 from tensorflow.python.framework import ops
 from tensorflow.python.framework import dtypes
 import pandas as pd
-import numpy as np
 import config as cfg
 
 	
