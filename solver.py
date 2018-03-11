@@ -73,7 +73,7 @@ class solver(object):
 				
 		
 
-	#train,vaild 완벽히 불리할 train 함수 => 현재 사용 x
+	#train,vaild  합쳐진 train 함수 => 추후 분리
 	def train_split(self,max_epoch,train_batch,valid_batch,total_train_size,train_batch_size,total_valid_size,valid_batch_size):
 		print("Session started!")
 		init_op = tf.global_variables_initializer()
@@ -122,49 +122,6 @@ class solver(object):
 		print(line)
 		self.f.write(line)
 		return max_index
-		
-	#train함수 => 후에 완벽히 기능 분리할 예정임 	
-	def train(self,max_epoch,train_batch,total_train_size,train_batch_size):
-		print("Session started!")
-		init_op = tf.global_variables_initializer()
-		self.sess.run(init_op)
-
-
-		display_step=1
-		max_accuracy=0
-		max_index=0
-		
-		for epoch in range(0,max_epoch+1):
-			avg_cost = 0
-			total_batch=(int)(total_train_size/train_batch_size)
-			for step in range(total_batch):
-				train_batch=self.sess.run([tf.cast(train_batch[0], tf.float32),tf.cast(train_batch[1], tf.float32)])
-				if epoch!=0:
-					_,c=self.sess.run([self.train_step,self.cost] , feed_dict={self.net.x: train_batch[0], self.net.y_target: train_batch[1], self.net.training:True})
-					# Compute average loss
-					avg_cost += c / total_batch
-				else:
-					c=self.sess.run(self.cost ,feed_dict={self.net.x: train_batch[0], self.net.y_target: train_batch[1], self.net.training:False})
-					avg_cost += c / total_batch
-
-			# Display logs per epoch step
-			if epoch % display_step == 0:
-				print ("Epoch:", '%04d' % (epoch), "cost=","{:.9f}".format(avg_cost))
-				train_loss,train_acc=self.cal_loss_accuracy(epoch,total_train_size,train_batch_size,train_batch,"training_loss","training_accuracy",False)	
-				#print data / save data
-				line = "epoch: %d/%d, train_loss: %.9f, train_acc: %.9f\n" % (
-					epoch, max_epoch, train_loss, train_acc)
-				print(line)
-				self.f.write(line)
-				if train_acc>=max_accuracy:
-					max_accuracy=train_acc
-					max_index=epoch				
-				self.saver.save(self.sess,"./weight/w",epoch)
-				
-		line = "max_acc: %.9f, max_index:%d\n"%(max_accuracy,max_index)
-		print(line)
-		self.f.write(line)
-		return max_index	
 	#test함수	
 	def test(self,test_batch,total_test_size,test_batch_size,max_index):
 		self.saver.restore(self.sess,"./weight/w-%d"%(max_index))
