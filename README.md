@@ -1,6 +1,4 @@
 ## sms-spam-classification
-
-
 ## DATASET
 * SMS Spam Collection Dataset(https://www.kaggle.com/uciml/sms-spam-collection-dataset)
 
