@@ -18,7 +18,7 @@ class solver(object):
 	
 		
 		#로그 저장 
-		self.f=open(cfg.LOGS_PATH+'logs.txt', 'a')
+		self.f=open('logs.txt', 'a')
 		
 		#GPU 설정
 		self.config=tf.ConfigProto(gpu_options=tf.GPUOptions(allow_growth =True))
