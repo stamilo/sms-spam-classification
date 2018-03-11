@@ -8,7 +8,7 @@ LOGS_PATH	= "logs/"
 
 #모델의 입력 차원=> 현재 input pipeline에서 자동 조정 
 NUM_DIM=0
-# 라벨 개수
+#라벨 개수
 NUM_LABELS		= 2
 #batch size 모두 0 => input pipeline에서 자동 조정 
 TRAIN_BATCH_SIZE	= 0
