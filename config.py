@@ -3,7 +3,7 @@
 #데이터셋 경로 위치
 DATASET_PATH      = "./spam.csv"
 
-#로그 파일, 텐서보드 저장경로
+#텐서보드 저장경로
 LOGS_PATH	= "logs/"
 
 #모델의 입력 차원=> 현재 input pipeline에서 자동 조정 
