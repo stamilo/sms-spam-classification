@@ -12,8 +12,7 @@
 * python main.py
 * python main.py --epoch 10 --train_batch_size 100 --valid_batch_size 100 --test_batch_size 100
 
-## Accuracy
-
+## ACCURACY
 * train accuracy 98%
 * valid accuracy 98%
 * test accuracy 98%
