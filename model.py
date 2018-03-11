@@ -3,7 +3,6 @@ from tensorflow.python.framework import ops
 from tensorflow.python.framework import dtypes
 from tensorflow.contrib.layers import batch_norm
 from tensorflow.contrib.framework import arg_scope
-import numpy as np
 
 #batch norm
 def Batch_Norm(x, training, scope="bn"):
